@@ -2,18 +2,19 @@
 
 ### Reading data using Scanner
 
-```  File file = new File(pathToFile);
+```  
+File file = new File(pathToFile);
 
-  try (Scanner scanner = new Scanner(file)) {
-      while (scanner.hasNext()) {
-          System.out.print(scanner.nextLine() + " ");
-      }
-  } catch (FileNotFoundException e) {
-      System.out.println("No file found: " + pathToFile);
-  }
+try (Scanner scanner = new Scanner(file)) {
+    while (scanner.hasNext()) {
+        System.out.print(scanner.nextLine() + " ");
+    }
+} catch (FileNotFoundException e) {
+    System.out.println("No file found: " + pathToFile);
+}
 ```
 ```
-  try (Scanner scanner = new Scanner(Paths.get("file.txt"))) {}
+try (Scanner scanner = new Scanner(Paths.get("file.txt"))) {}
 ```
 
 ### Reading all text from a file as a single string:
@@ -33,3 +34,96 @@ public class ReadingFileDemo {
     }
 }
 ```
+
+### Managing Files:
+
+#### Create file:
+
+```
+File file = new File("/home/username/Documents/file.txt");
+try {
+    boolean createdNew = file.createNewFile();
+    if (createdNew) {
+        System.out.println("The file was successfully created.");
+    } else {
+        System.out.println("The file already exists.");
+    }
+} catch (IOException e) {
+    System.out.println("Cannot create the file: " + file.getPath());
+}
+```
+
+#### Create directory:
+
+```
+File file = new File("/home/art/Documents/dir");
+
+boolean createdNewDirectory = file.mkdir();
+if (createdNewDirectory) {
+    System.out.println("It was successfully created.");
+} else {
+    System.out.println("It was not created.");
+}
+```
+
+#### Create directories:
+
+```
+File file = new File("/home/art/Documents/dir/dir/dir");
+
+boolean createdNewDirectory = file.mkdirs();
+if (createdNewDirectory) {
+    System.out.println("It was successfully created.");
+} else {
+    System.out.println("It was not created.");
+}
+```
+
+#### Remove files and directories:
+
+```
+File file = new File("/home/art/Documents/dir/dir/dir");
+        
+if (file.delete()) {
+    System.out.println("It was successfully removed.");
+} else {
+    System.out.println("It was not removed.");
+}
+```
+
+
+```
+public void deleteDirRecursively(File dir) {
+    File[] children = dir.listFiles();
+    for (File child : children) {
+        if (child.isDirectory()) {
+            deleteDirRecursively(child);
+        } else {
+            child.delete();
+        }
+    }
+
+    dir.delete();
+}
+```
+
+
+#### Renaming and moving files and directories
+
+```
+File file = new File("/home/art/Documents/dir/filename.txt");
+
+boolean renamed = file.renameTo(new File("/home/art/Documents/dir/newname.txt"));
+
+
+File file = new File("/home/art/Documents/dir/filename.txt");
+File renamedFile = new File("/home/art/Documents/dir/newname.txt");
+
+boolean renamed = file.renameTo(renamedFile);
+if (renamed) {
+    System.out.println("It was successfully renamed.");
+} else {
+    System.out.println("It was not renamed.");
+}
+```
+
