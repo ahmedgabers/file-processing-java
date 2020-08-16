@@ -1,4 +1,4 @@
-# File Processing Java
+# File Processing Java Snippets
 
 ### Reading data using Scanner
 
