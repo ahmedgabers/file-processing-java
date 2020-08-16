@@ -1,4 +1,4 @@
-# File Processing Java Snippets
+# Reading Files
 
 #### Reading data using Scanner
 
@@ -126,5 +126,35 @@ if (renamed) {
     System.out.println("It was not renamed.");
 }
 ```
-======================
+<p align=center>======================</p>
+# Writing Files
 
+#### The FileWriter class
+```
+FileWriter(String fileName);
+FileWriter(String fileName, boolean append);
+FileWriter(File file);
+FileWriter(File file, boolean append);
+```
+```
+File file = new File("/home/username/path/to/your/file.txt");
+
+try (FileWriter writer = new FileWriter(file)) {
+    writer.write("Hello, World");
+} catch (IOException e) {
+    System.out.printf("An exception occurs %s", e.getMessage());
+}
+```
+
+#### The PrintWriter class
+```
+File file = new File("/home/art/Documents/file.txt");
+try (PrintWriter printWriter = new PrintWriter(file)) {
+    printWriter.print("Hello"); // prints a string
+    printWriter.println("Java"); // prints a string and then terminates the line
+    printWriter.println(123); // prints a number
+    printWriter.printf("You have %d %s", 400, "gold coins"); // prints a formatted string
+} catch (IOException e) {
+    System.out.printf("An exception occurs %s", e.getMessage());
+}
+```
