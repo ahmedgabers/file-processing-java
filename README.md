@@ -1,6 +1,6 @@
 # File Processing Java Snippets
 
-### Reading data using Scanner
+#### Reading data using Scanner
 
 ```  
 File file = new File(pathToFile);
@@ -17,7 +17,7 @@ try (Scanner scanner = new Scanner(file)) {
 try (Scanner scanner = new Scanner(Paths.get("file.txt"))) {}
 ```
 
-### Reading all text from a file as a single string:
+#### Reading all text from a file as a single string:
 ```
 public class ReadingFileDemo {
     public static String readFileAsString(String fileName) throws IOException {
@@ -35,9 +35,9 @@ public class ReadingFileDemo {
 }
 ```
 
-### Managing Files:
+#### Managing Files:
 
-#### Create file:
+###### Create file:
 
 ```
 File file = new File("/home/username/Documents/file.txt");
@@ -53,7 +53,7 @@ try {
 }
 ```
 
-#### Create directory:
+###### Create directory:
 
 ```
 File file = new File("/home/art/Documents/dir");
@@ -66,7 +66,7 @@ if (createdNewDirectory) {
 }
 ```
 
-#### Create directories:
+###### Create directories:
 
 ```
 File file = new File("/home/art/Documents/dir/dir/dir");
@@ -79,7 +79,7 @@ if (createdNewDirectory) {
 }
 ```
 
-#### Remove files and directories:
+###### Remove files and directories:
 
 ```
 File file = new File("/home/art/Documents/dir/dir/dir");
@@ -108,7 +108,7 @@ public void deleteDirRecursively(File dir) {
 ```
 
 
-#### Renaming and moving files and directories
+###### Renaming and moving files and directories
 
 ```
 File file = new File("/home/art/Documents/dir/filename.txt");
@@ -126,4 +126,5 @@ if (renamed) {
     System.out.println("It was not renamed.");
 }
 ```
+======================
 
